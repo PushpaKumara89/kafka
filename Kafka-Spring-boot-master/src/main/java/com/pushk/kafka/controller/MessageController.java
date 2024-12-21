@@ -1,5 +1,6 @@
 package com.pushk.kafka.controller;
 
+import com.pushk.kafka.payload.Customer;
 import com.pushk.kafka.producer.KafkaProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +17,10 @@ public class MessageController {
 
     @PostMapping
     public ResponseEntity<String> sendMessage(
-            @RequestBody String message
+            @RequestBody Customer customer
             ) {
-        kafkaProducer.sendMessage(message);
-        return ResponseEntity.ok("Message Queued Successfully");
+        kafkaProducer.sendMessage(customer);
+        return ResponseEntity.ok("Message Queued Successfully JSON");
     }
 }
 
